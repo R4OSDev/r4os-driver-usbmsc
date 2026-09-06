@@ -6,14 +6,17 @@ Projektstruktur seit 0.51.22
 
 Dieses Verzeichnis ist ein eigenstaendiges R4OS-SDK-Projekt fuer USBMSC.R4D.
 
-Build:
+Build aus dem Projektverzeichnis unter Windows:
 
-    cd Code\System\Driver\USBMSC
-    ..\..\..\DevTools\Zig\zig.exe build
+    Build.bat
 
-Artefakt:
+Build aus dem Projektverzeichnis unter Linux:
 
-    zig-out\USBMSC.R4D
+    ./Build.sh
+
+Artefakt relativ zum Workspace-Root:
+
+    Artifacts/Modules/USBMSC/USBMSC.R4D
 
 Manifest:
 
