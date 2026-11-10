@@ -9,12 +9,12 @@ const State = extern struct {
 var state: State = .{};
 
 comptime {
-    asm (r4os.r4dev.driverEntriesAsm("usbmsc_init", "usbmsc_shutdown"));
+    asm (r4os.technical2.driverEntriesAsm("usbmsc_init", "usbmsc_shutdown"));
 }
 
-export fn usbmsc_init(api: *const r4os.r4dev.DriverApi) callconv(.c) i32 {
-    var ctx = r4os.r4dev.DriverContext.init(api);
-    if (!ctx.apiCompatible()) {
+export fn usbmsc_init(api: *const r4os.r4dev.DriverApi2) callconv(.c) i32 {
+    var ctx = r4os.r4dev.DriverContext2.init(api);
+    if (!ctx.apiCompatible() or !ctx.requires(.{ "log_error", "log_info" })) {
         ctx.logError("USBMSC.R4D driver api mismatch");
         return -3;
     }
